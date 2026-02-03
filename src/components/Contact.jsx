@@ -7,7 +7,7 @@ const Contact = () => {
             <p style={{ marginBottom: '2rem', color: 'var(--text-secondary)' }}>
                 I am available for professional opportunities in Urban Planning, GIS Analysis, and Regional Development consulting.
             </p>
-            <a href="mailto:contact@example.com" className="btn-primary">Contact via Email</a>
+            <a href="mailto:Dimaseka.amikom@gmail.com" className="btn-primary">Contact via Email</a>
         </section>
     );
 };
