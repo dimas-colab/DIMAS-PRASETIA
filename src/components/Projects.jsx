@@ -52,10 +52,10 @@ const Projects = () => {
                     description="Studi komprehensif mengenai dampak sosio-spasial program perbaikan kawasan kumuh menggunakan pemetaan GIS dan survei lapangan."
                 />
                 <ProjectCard
-                    title="Dinamika Perubahan Tata Guna Lahan"
+                    title="Prespektif dan strategi petani terhadap perubahan fungsi lahan pertanian untuk pembangunan exit tol jogja-bawen kalurahan banyurejo kepanewon tempel"
                     category="Jurnal Nasional"
                     date="Agustus 2024"
-                    description="Publikasi ilmiah mengenai pergeseran penggunaan lahan selama satu dekade terakhir dengan data penginderaan jauh."
+                    description="Penelitian yang menganalisis dampak pembangunan infrastruktur jalan tol terhadap perubahan orientasi dan fungsi lahan pertanian di wilayah Banyurejo."
                 />
                 <ProjectCard
                     title="Dukungan Perencanaan Tata Ruang (RTRW/RDTR)"
