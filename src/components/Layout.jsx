@@ -5,13 +5,24 @@ import '../App.css'; // Ensure styles are imported
 const Layout = ({ children }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
-      <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1, pointerEvents: 'none' }}>
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: -1,
+        pointerEvents: 'none',
+        background: 'var(--bumn-gray-light)', // Fallback color
+        overflow: 'hidden'
+      }}>
         <LiquidEther
           colors={['#002B5C', '#004a8d', '#fdc500', '#ffffff']}
           autoSpeed={0.2}
           autoIntensity={1.2}
           mouseForce={15}
           cursorSize={80}
+          resolution={window.innerWidth < 768 ? 0.25 : 0.5} // Lower resolution on mobile for performance
         />
       </div>
       <header className="header-wrapper">
