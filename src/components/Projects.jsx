@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const ProjectCard = ({ title, category, date, description }) => (
+const ProjectCard = ({ title, category, date, description, image, onOpen }) => (
     <div style={{
         backgroundColor: 'white',
         borderRadius: '8px',
@@ -35,12 +35,39 @@ const ProjectCard = ({ title, category, date, description }) => (
             borderTop: '1px solid #f0f0f0',
             backgroundColor: '#f9f9f9'
         }}>
-            <a href="#" style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--bumn-blue)' }}>Selengkapnya &rarr;</a>
+            <button
+                onClick={() => onOpen(image, title)}
+                style={{
+                    fontSize: '0.9rem',
+                    fontWeight: '600',
+                    color: 'var(--bumn-blue)',
+                    background: 'none',
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer'
+                }}>
+                Selengkapnya &rarr;
+            </button>
         </div>
     </div>
 );
 
 const Projects = () => {
+    const [modalImage, setModalImage] = useState(null);
+    const [modalTitle, setModalTitle] = useState('');
+
+    const openModal = (img, title) => {
+        if (img) {
+            setModalImage(img);
+            setModalTitle(title);
+        }
+    };
+
+    const closeModal = () => {
+        setModalImage(null);
+        setModalTitle('');
+    };
+
     return (
         <section id="projects" className="section container">
             <h2 className="section-title">Publikasi & Proyek Terkini</h2>
@@ -68,8 +95,44 @@ const Projects = () => {
                     category="Analisis GIS"
                     date="Maret 2024"
                     description="Identifikasi zona rawan bencana banjir menggunakan analisis overlay dan data topografi untuk mitigasi risiko."
+                    image="/assets/projects/peta-banjir.jpg"
+                    onOpen={openModal}
                 />
             </div>
+
+            {/* Modal for viewing images */}
+            {modalImage && (
+                <div style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'rgba(0,0,0,0.85)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 2000,
+                    padding: '2rem'
+                }} onClick={closeModal}>
+                    <div style={{
+                        backgroundColor: 'white',
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        maxWidth: '90%',
+                        maxHeight: '90%',
+                        overflow: 'auto',
+                        position: 'relative'
+                    }} onClick={e => e.stopPropagation()}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', borderBottom: '1px solid #eee', paddingBottom: '0.5rem' }}>
+                            <h4 style={{ margin: 0, color: 'var(--bumn-blue)' }}>{modalTitle}</h4>
+                            <button onClick={closeModal} style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', lineHeight: 1 }}>&times;</button>
+                        </div>
+                        <img src={modalImage} alt={modalTitle} style={{ maxWidth: '100%', height: 'auto', borderRadius: '4px' }} />
+                    </div>
+                </div>
+            )}
         </section>
     );
 };
