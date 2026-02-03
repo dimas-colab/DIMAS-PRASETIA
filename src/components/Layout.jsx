@@ -1,9 +1,17 @@
 import React from 'react';
+import LiquidEther from './Backgrounds/LiquidEther';
 import '../App.css'; // Ensure styles are imported
 
 const Layout = ({ children }) => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
+      <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1, pointerEvents: 'none' }}>
+        <LiquidEther
+          colors={['#002B5C', '#fdc500', '#004a8d']}
+          autoSpeed={0.3}
+          autoIntensity={1.5}
+        />
+      </div>
       <header className="header-wrapper">
         <div className="container header">
           <div className="brand-container">
