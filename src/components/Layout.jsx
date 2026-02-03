@@ -7,9 +7,11 @@ const Layout = ({ children }) => {
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
       <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1, pointerEvents: 'none' }}>
         <LiquidEther
-          colors={['#002B5C', '#fdc500', '#004a8d']}
-          autoSpeed={0.3}
-          autoIntensity={1.5}
+          colors={['#002B5C', '#004a8d', '#fdc500', '#ffffff']}
+          autoSpeed={0.2}
+          autoIntensity={1.2}
+          mouseForce={15}
+          cursorSize={80}
         />
       </div>
       <header className="header-wrapper">
