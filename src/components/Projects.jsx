@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ProjectCard = ({ title, category, date, description, image, onOpen }) => (
+const ProjectCard = ({ title, category, date, description, images, onOpen }) => (
     <div style={{
         backgroundColor: 'white',
         borderRadius: '8px',
@@ -36,7 +36,7 @@ const ProjectCard = ({ title, category, date, description, image, onOpen }) => (
             backgroundColor: '#f9f9f9'
         }}>
             <button
-                onClick={() => onOpen(image, title)}
+                onClick={() => onOpen(images, title)}
                 style={{
                     fontSize: '0.9rem',
                     fontWeight: '600',
@@ -53,18 +53,18 @@ const ProjectCard = ({ title, category, date, description, image, onOpen }) => (
 );
 
 const Projects = () => {
-    const [modalImage, setModalImage] = useState(null);
+    const [modalImages, setModalImages] = useState(null);
     const [modalTitle, setModalTitle] = useState('');
 
-    const openModal = (img, title) => {
-        if (img) {
-            setModalImage(img);
+    const openModal = (imgs, title) => {
+        if (imgs && imgs.length > 0) {
+            setModalImages(imgs);
             setModalTitle(title);
         }
     };
 
     const closeModal = () => {
-        setModalImage(null);
+        setModalImages(null);
         setModalTitle('');
     };
 
@@ -95,13 +95,13 @@ const Projects = () => {
                     category="Analisis GIS"
                     date="Maret 2024"
                     description="Identifikasi zona rawan bencana banjir menggunakan analisis overlay dan data topografi untuk mitigasi risiko."
-                    image="/assets/projects/peta-banjir.jpg"
+                    images={["/assets/projects/peta-banjir.jpg", "/assets/projects/peta-banjir-gamping.png"]}
                     onOpen={openModal}
                 />
             </div>
 
             {/* Modal for viewing images */}
-            {modalImage && (
+            {modalImages && (
                 <div style={{
                     position: 'fixed',
                     top: 0,
@@ -122,14 +122,32 @@ const Projects = () => {
                         borderRadius: '8px',
                         maxWidth: '90%',
                         maxHeight: '90%',
-                        overflow: 'auto',
+                        overflowY: 'auto',
                         position: 'relative'
                     }} onClick={e => e.stopPropagation()}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', borderBottom: '1px solid #eee', paddingBottom: '0.5rem' }}>
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            marginBottom: '1rem',
+                            borderBottom: '1px solid #eee',
+                            paddingBottom: '0.5rem',
+                            position: 'sticky',
+                            top: 0,
+                            backgroundColor: 'white',
+                            zIndex: 1
+                        }}>
                             <h4 style={{ margin: 0, color: 'var(--bumn-blue)' }}>{modalTitle}</h4>
                             <button onClick={closeModal} style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', lineHeight: 1 }}>&times;</button>
                         </div>
-                        <img src={modalImage} alt={modalTitle} style={{ maxWidth: '100%', height: 'auto', borderRadius: '4px' }} />
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                            {modalImages.map((img, index) => (
+                                <div key={index}>
+                                    <p style={{ fontSize: '0.8rem', color: '#666', marginBottom: '0.5rem' }}>Dokumen {index + 1}</p>
+                                    <img src={img} alt={`${modalTitle} - ${index}`} style={{ maxWidth: '100%', height: 'auto', borderRadius: '4px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }} />
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             )}
