@@ -1,44 +1,73 @@
 import React from 'react';
 
-const ProjectCard = ({ title, category, description }) => (
+const ProjectCard = ({ title, category, date, description }) => (
     <div style={{
-        backgroundColor: 'var(--bg-secondary)',
-        padding: '2rem',
-        borderRadius: '4px',
-        border: '1px solid rgba(255,255,255,0.05)'
+        backgroundColor: 'white',
+        borderRadius: '8px',
+        boxShadow: 'var(--shadow-card)',
+        overflow: 'hidden',
+        border: '1px solid #eee',
+        transition: 'transform 0.2s',
+        display: 'flex',
+        flexDirection: 'column'
     }}>
-        <span style={{
-            fontSize: '0.8rem',
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em',
-            color: 'var(--accent-blue)',
-            display: 'block',
-            marginBottom: '0.5rem'
-        }}>{category}</span>
-        <h4 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>{title}</h4>
-        <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)' }}>{description}</p>
+        <div style={{ height: '8px', backgroundColor: 'var(--bumn-blue)' }}></div>
+        <div style={{ padding: '1.5rem', flex: 1 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                <span style={{
+                    fontSize: '0.75rem',
+                    fontWeight: '700',
+                    color: 'var(--bumn-blue)',
+                    textTransform: 'uppercase'
+                }}>{category}</span>
+                <span style={{ fontSize: '0.8rem', color: '#999' }}>{date}</span>
+            </div>
+            <h3 style={{
+                fontSize: '1.25rem',
+                marginBottom: '1rem',
+                color: 'var(--bumn-text-dark)',
+                lineHeight: '1.4'
+            }}>{title}</h3>
+            <p style={{ fontSize: '0.95rem', color: '#555', lineHeight: '1.6' }}>{description}</p>
+        </div>
+        <div style={{
+            padding: '1rem 1.5rem',
+            borderTop: '1px solid #f0f0f0',
+            backgroundColor: '#f9f9f9'
+        }}>
+            <a href="#" style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--bumn-blue)' }}>Selengkapnya &rarr;</a>
+        </div>
     </div>
 );
 
 const Projects = () => {
     return (
-        <section id="projects" className="section">
-            <h3>Selected Research & Projects</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+        <section id="projects" className="section container">
+            <h2 className="section-title">Publikasi & Proyek Terkini</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
                 <ProjectCard
-                    title="Slum Area Impact Analysis"
-                    category="Social Impact Assessment"
-                    description="A comprehensive study conducted in Sleman, Yogyakarta, analyzing the socio-spatial impacts of slum upgradation programs using GIS mapping and field surveys."
+                    title="Analisis Dampak Kawasan Kumuh di Sleman"
+                    category="Studi Kasus"
+                    date="Oktober 2024"
+                    description="Studi komprehensif mengenai dampak sosio-spasial program perbaikan kawasan kumuh menggunakan pemetaan GIS dan survei lapangan."
                 />
                 <ProjectCard
-                    title="Land-Use Change Dynamics"
-                    category="Academic Publication"
-                    description="Published research in a national journal examining temporal land-use shifts over a decade, utilizing remote sensing data and predictive modeling."
+                    title="Dinamika Perubahan Tata Guna Lahan"
+                    category="Jurnal Nasional"
+                    date="Agustus 2024"
+                    description="Publikasi ilmiah mengenai pergeseran penggunaan lahan selama satu dekade terakhir dengan data penginderaan jauh."
                 />
                 <ProjectCard
-                    title="Regional Spatial Planning Support"
-                    category="Urban Planning"
-                    description="Assisted in drafting spatial plans (RTRW/RDTR) by processing geospatial data and creating high-accuracy thematic maps for government review."
+                    title="Dukungan Perencanaan Tata Ruang (RTRW/RDTR)"
+                    category="Proyek Pemerintah"
+                    date="Juni 2024"
+                    description="Pendampingan teknis dalam penyusunan peta tematik akurasi tinggi untuk dokumen perencanaan daerah."
+                />
+                <ProjectCard
+                    title="Pemetaan Zonasi Rawan Bencana"
+                    category="Analisis GIS"
+                    date="Maret 2024"
+                    description="Identifikasi zona rawan bencana banjir menggunakan analisis overlay dan data topografi untuk mitigasi risiko."
                 />
             </div>
         </section>

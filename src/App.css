@@ -1,61 +1,110 @@
-/* Clean slate for component-specific styles */
+/* BUMN Layout Utilities */
 .container {
-  max-width: 1200px;
+  max-width: 1280px;
+  /* Wider container for corporate feel */
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem;
 }
 
-.section {
-  margin-bottom: 4rem;
+/* Header - Official Government Style */
+.header-wrapper {
+  background-color: white;
+  box-shadow: var(--shadow-nav);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--bg-secondary);
-  margin-bottom: 2rem;
+  height: 80px;
+  /* Taller header */
 }
 
+/* Logo Area mimicking BUMN logo text */
+.brand-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brand-title {
+  color: var(--bumn-blue);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+}
+
+.brand-subtitle {
+  color: var(--bumn-text-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+/* Navigation - Clean Top Menu */
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .nav-links a {
-  color: var(--text-secondary);
+  color: var(--bumn-text-dark);
+  font-weight: 600;
   font-size: 0.95rem;
-  font-weight: 500;
+  text-transform: uppercase;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid transparent;
 }
 
 .nav-links a:hover {
-  color: var(--accent-light);
+  text-decoration: none;
+  color: var(--bumn-blue);
+  border-bottom-color: var(--bumn-blue);
 }
 
-.hero {
+/* Section Styling */
+.section {
   padding: 4rem 0;
-  max-width: 800px;
 }
 
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  color: var(--text-secondary);
-  font-size: 1.25rem;
+.section-title {
+  color: var(--bumn-blue);
+  font-size: 2rem;
+  font-weight: 700;
   margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 1rem;
 }
 
-.btn-primary {
-  background-color: var(--accent-blue);
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background-color: var(--bumn-gold);
+}
+
+/* Button - Corporate Style */
+.btn-bumn {
+  background-color: var(--bumn-blue);
   color: white;
-  padding: 0.75rem 1.5rem;
+  padding: 10px 24px;
   border-radius: 4px;
-  /* Slight radius, not full round */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   border: none;
-  font-weight: 500;
-  display: inline-block;
+  font-size: 0.9rem;
+}
+
+.btn-bumn:hover {
+  background-color: var(--bumn-dark-blue);
+  text-decoration: none;
 }

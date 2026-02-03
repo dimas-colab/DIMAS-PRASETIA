@@ -1,13 +1,20 @@
 :root {
-  /* Strictly Professional Palette */
-  --bg-primary: #0f172a;
-  --bg-secondary: #1f2937;
-  --text-primary: #e5e7eb;
-  --text-secondary: #94a3b8;
-  --accent-blue: #2563eb;
-  --accent-light: #f8fafc;
-  
-  --font-main: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  /* BUMN Corporate Palette */
+  --bumn-blue: #00509d;
+  /* Ministry Blue */
+  --bumn-dark-blue: #00296b;
+  /* Footer/Deep Accents */
+  --bumn-gold: #fdc500;
+  /* Accent/Highlight */
+  --bumn-gray-light: #f4f6f8;
+  /* Background */
+  --bumn-text-dark: #333333;
+  --bumn-text-light: #ffffff;
+  --bumn-text-muted: #6c757d;
+
+  --font-main: 'Roboto', 'Inter', sans-serif;
+  --shadow-card: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-nav: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -18,30 +25,19 @@
 
 body {
   font-family: var(--font-main);
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  background-color: var(--bumn-gray-light);
+  color: var(--bumn-text-dark);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
 a {
-  color: var(--accent-blue);
+  color: var(--bumn-blue);
   text-decoration: none;
-  transition: opacity 0.2s ease;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 a:hover {
-  opacity: 0.8;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  color: var(--accent-light);
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-button {
-  cursor: pointer;
-  font-family: inherit;
+  text-decoration: underline;
 }
