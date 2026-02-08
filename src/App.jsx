@@ -5,6 +5,8 @@ import Layout from './components/Layout';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
+import MappingResults from './components/MappingResults';
+import PastReads from './components/PastReads';
 import Contact from './components/Contact';
 
 function App() {
@@ -13,6 +15,8 @@ function App() {
       <Hero />
       <About />
       <Projects />
+      <MappingResults />
+      <PastReads />
       <Contact />
     </Layout>
   );

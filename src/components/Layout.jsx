@@ -35,6 +35,8 @@ const Layout = ({ children }) => {
           <nav className="nav-links">
             <a href="#about">Profil</a>
             <a href="#projects">Publikasi & Riset</a>
+            <a href="#mapping">Hasil Pemetaan</a>
+            <a href="#past-reads">Past Reads</a>
             <a href="#contact">Kontak</a>
           </nav>
         </div>
