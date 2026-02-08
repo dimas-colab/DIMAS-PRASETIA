@@ -89,6 +89,66 @@ const About = () => {
                     position: sticky;
                     top: 120px;
                 }
+                .skill-card-premium {
+                    background: rgba(255, 255, 255, 0.7);
+                    backdrop-filter: blur(10px);
+                    padding: 1.25rem;
+                    border-radius: 12px;
+                    margin-bottom: 1.25rem;
+                    border: 1px solid rgba(255, 255, 255, 0.3);
+                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                    position: relative;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    z-index: 1;
+                }
+                .skill-card-premium:hover {
+                    transform: translateY(-5px) scale(1.02);
+                    background: rgba(255, 255, 255, 0.9);
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                }
+                .skill-card-premium::before {
+                    content: '';
+                    position: absolute;
+                    inset: -2px;
+                    z-index: -1;
+                    background: linear-gradient(45deg, #d63031, #00509d, #fdc500, #27ae60);
+                    background-size: 400% 400%;
+                    animation: glowShift 8s linear infinite;
+                    border-radius: 14px;
+                    opacity: 0.3;
+                    transition: opacity 0.3s;
+                }
+                .skill-card-premium:hover::before {
+                    opacity: 0.8;
+                    filter: blur(8px);
+                }
+                @keyframes glowShift {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+                .skill-icon-wrap {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    margin-bottom: 0.25rem;
+                }
+                .skill-label-text {
+                    font-weight: 800;
+                    color: var(--bumn-dark-blue);
+                    font-size: 0.95rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                }
+                .skill-desc-text {
+                    color: #555;
+                    font-size: 0.9rem;
+                    line-height: 1.4;
+                    padding-left: 2rem;
+                }
                 @media (max-width: 992px) {
                     .about-grid {
                         grid-template-columns: 1fr;
@@ -113,6 +173,13 @@ const About = () => {
                         gap: 0.5rem !important;
                         flex-direction: column;
                         margin-bottom: 2.5rem !important;
+                    }
+                    .skill-card-premium {
+                        padding: 1rem;
+                    }
+                    .skill-desc-text {
+                        padding-left: 1.75rem;
+                        font-size: 0.85rem;
                     }
                 }
             `}</style>
@@ -205,37 +272,72 @@ const About = () => {
                     </div>
 
                     <div className="about-sticky-sidebar" style={{
-                        backgroundColor: 'var(--bumn-gray-light)',
-                        padding: '2.5rem',
-                        borderRadius: '12px',
-                        border: '1px solid #e0e0e0',
+                        backgroundColor: 'transparent',
+                        padding: '1rem',
                     }}>
-                        <h4 style={{ color: 'var(--bumn-dark-blue)', marginBottom: '1.5rem', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px', borderBottom: '2px solid var(--bumn-gold)', paddingBottom: '0.5rem', display: 'inline-block' }}>
-                            Kompetensi Teknis
+                        <h4 style={{ color: 'var(--bumn-dark-blue)', marginBottom: '2.5rem', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '2px', borderLeft: '6px solid var(--bumn-gold)', paddingLeft: '1rem', fontSize: '1.2rem' }}>
+                            Kompetensi Utama
                         </h4>
 
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                            <SkillBadge
-                                title="Spatial Analysis"
-                                items={['ArcMap / ArcGIS Pro', 'QGIS', 'Global Mapper', 'Google Earth Eng.']}
-                            />
-                            <SkillBadge
-                                title="Design & Modeling"
-                                items={['AutoCAD', 'SketchUp', 'Adobe Illustrator', 'Photoshop']}
-                            />
-                            <SkillBadge
-                                title="Planning Skills"
-                                items={['RTRW / RDTR', 'KLHS Analysis', 'Social Impact Assessment']}
-                            />
-                            <SkillBadge
-                                title="Data Management"
-                                items={['PostgreSQL/PostGIS', 'Tableau', 'Excel Advanced']}
-                            />
+                        <div className="skill-card-premium">
+                            <div className="skill-icon-wrap"><span>🌍</span><span className="skill-label-text">GIS & Pemetaan</span></div>
+                            <div className="skill-desc-text">Analisis Spasial & Kartografi Digital (ArcGIS, QGIS, GEE)</div>
+                        </div>
+                        <div className="skill-card-premium">
+                            <div className="skill-icon-wrap"><span>📐</span><span className="skill-label-text">Perencanaan Wilayah</span></div>
+                            <div className="skill-desc-text">Penyusunan Dokumen Teknis & Strategis Kota</div>
+                        </div>
+                        <div className="skill-card-premium">
+                            <div className="skill-icon-wrap"><span>📊</span><span className="skill-label-text">Olah Data & Statistik</span></div>
+                            <div className="skill-desc-text">Manajemen Data Kuantitatif (Advanced Excel, SPSS)</div>
+                        </div>
+                        <div className="skill-card-premium">
+                            <div className="skill-icon-wrap"><span>📝</span><span className="skill-label-text">Reporting Strategis</span></div>
+                            <div className="skill-desc-text">Penyusunan Administrasi & Laporan Perencanaan</div>
+                        </div>
+                        <div className="skill-card-premium">
+                            <div className="skill-icon-wrap"><span>📍</span><span className="skill-label-text">Survey Lapangan</span></div>
+                            <div className="skill-desc-text">Akuisisi Data Terestris & Metodologi Survei (GPS)</div>
+                        </div>
+                        <div className="skill-card-premium">
+                            <div className="skill-icon-wrap"><span>🎨</span><span className="skill-label-text">Komunikasi Visual</span></div>
+                            <div className="skill-desc-text">Layout Peta, Presentasi & Infografis (Adobe CC)</div>
+                        </div>
+                        <div className="skill-card-premium">
+                            <div className="skill-icon-wrap"><span>🏗️</span><span className="skill-label-text">Visualisasi 3D</span></div>
+                            <div className="skill-desc-text">Pemodelan Tata Ruang & Konstruksi (AutoCAD, SketchUp)</div>
+                        </div>
+                        <div className="skill-card-premium">
+                            <div className="skill-icon-wrap"><span>🎤</span><span className="skill-label-text">Public Speaking</span></div>
+                            <div className="skill-desc-text">Komunikasi Profesional & Teknik Presentasi</div>
+                        </div>
+                        <div className="skill-card-premium">
+                            <div className="skill-icon-wrap"><span>🎬</span><span className="skill-label-text">Digital Content</span></div>
+                            <div className="skill-desc-text">Video Editing & Multimedia Storytelling (CapCut)</div>
+                        </div>
+                        <div className="skill-card-premium">
+                            <div className="skill-icon-wrap"><span>🏛️</span><span className="skill-label-text">Instansi Teknis</span></div>
+                            <div className="skill-desc-text">Pengalaman DPUPKP Sleman (Nilai Sempurna)</div>
+                        </div>
+                        <div className="skill-card-premium">
+                            <div className="skill-icon-wrap"><span>🤳</span><span className="skill-label-text">Digital Interaction</span></div>
+                            <div className="skill-desc-text">Sales Skill & Host Live (Shopee/TikTok Live)</div>
                         </div>
 
-                        <div style={{ marginTop: '2.5rem', padding: '1rem', backgroundColor: 'var(--bumn-blue)', borderRadius: '8px', color: 'white', textAlign: 'center' }}>
-                            <div style={{ fontSize: '0.8rem', opacity: 0.9, marginBottom: '0.25rem' }}>Status Profesional</div>
-                            <div style={{ fontWeight: '700' }}>Siap untuk Kolaborasi</div>
+                        <div style={{
+                            marginTop: '3rem',
+                            padding: '1.5rem',
+                            background: 'linear-gradient(135deg, var(--bumn-blue), #003366)',
+                            borderRadius: '15px',
+                            color: 'white',
+                            textAlign: 'center',
+                            boxShadow: '0 10px 20px rgba(0,43,92,0.3)',
+                            position: 'relative',
+                            overflow: 'hidden'
+                        }}>
+                            <div style={{ position: 'absolute', top: '-20px', right: '-20px', width: '80px', height: '80px', background: 'rgba(255,255,255,0.1)', borderRadius: '50%' }}></div>
+                            <div style={{ fontSize: '0.85rem', opacity: 0.8, marginBottom: '0.5rem', letterSpacing: '1px' }}>STATUS PROFESIONAL</div>
+                            <div style={{ fontWeight: '800', fontSize: '1.1rem' }}>Siap Berkontribusi!</div>
                         </div>
                     </div>
                 </div>
