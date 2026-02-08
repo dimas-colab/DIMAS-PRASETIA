@@ -29,7 +29,10 @@ const SkillBadge = ({ title, items }) => (
 
 const TimelineItem = ({ year, title, subtitle, description, highlights, bgColor }) => (
     <div className={`timeline-container ${bgColor || ''}`}>
-        <div className="spiral-decor"></div>
+        <div className="orbit-decor">
+            <div className="orbit-inner"></div>
+            <div className="orbit-outer"></div>
+        </div>
         <div className="timeline-year">{year}</div>
         <div className="timeline-content" style={{ flex: 1 }}>
             <h3 style={{ margin: '0 0 0.25rem 0', color: 'var(--bumn-dark-blue)', fontSize: '1.2rem', fontWeight: '800' }}>{title}</h3>
@@ -160,18 +163,31 @@ const About = () => {
                 @keyframes pulseYellow { 0% { background: rgba(253, 197, 0, 0.02); } 50% { background: rgba(253, 197, 0, 0.08); } 100% { background: rgba(253, 197, 0, 0.02); } }
                 @keyframes pulseGreen { 0% { background: rgba(39, 174, 96, 0.02); } 50% { background: rgba(39, 174, 96, 0.08); } 100% { background: rgba(39, 174, 96, 0.02); } }
 
-                .spiral-decor {
+                .orbit-decor {
                     position: absolute;
-                    right: -20px;
-                    top: -20px;
-                    width: 100px;
-                    height: 100px;
-                    border: 2px dashed rgba(0,0,0,0.1);
-                    border-radius: 50%;
-                    animation: rotateSpiral 10s linear infinite;
+                    right: -40px;
+                    top: -40px;
+                    width: 150px;
+                    height: 150px;
                     pointer-events: none;
+                    z-index: 0;
                 }
-                @keyframes rotateSpiral {
+                .orbit-inner, .orbit-outer {
+                    position: absolute;
+                    inset: 0;
+                    border: 1px solid rgba(255,255,255,0.2);
+                    border-radius: 50%;
+                }
+                .orbit-inner {
+                    animation: rotateOrbit 12s linear infinite;
+                    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+                }
+                .orbit-outer {
+                    scale: 1.2;
+                    animation: rotateOrbit 20s linear reverse infinite;
+                    border: 1px dashed rgba(255,255,255,0.15);
+                }
+                @keyframes rotateOrbit {
                     from { transform: rotate(0deg); }
                     to { transform: rotate(360deg); }
                 }
@@ -293,19 +309,23 @@ const About = () => {
                                 title="Universitas AMIKOM Yogyakarta"
                                 subtitle="S1 Perencanaan Wilayah dan Kota (PWK)"
                                 description="Lulus tahun 2025 (mengalami cuti akademik selama ±1,5 tahun karena kondisi kesehatan)."
+                                bgColor="bg-blue"
                             />
                             <TimelineItem
                                 year="2016 – 2019"
                                 title="SMK Negeri 1 Seyegan"
                                 subtitle="Teknik Konstruksi Batu dan Beton"
+                                bgColor="bg-yellow"
                             />
                             <TimelineItem
                                 year="2013 – 2016"
                                 title="MTs Negeri 1 Seyegan"
+                                bgColor="bg-green"
                             />
                             <TimelineItem
                                 year="2007 – 2013"
                                 title="SD Negeri 1 Margoagung"
+                                bgColor="bg-red"
                             />
                         </div>
                     </div>
