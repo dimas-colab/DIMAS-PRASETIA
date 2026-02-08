@@ -27,35 +27,19 @@ const SkillBadge = ({ title, items }) => (
     </div>
 );
 
-const TimelineItem = ({ year, title, subtitle, description, highlights }) => (
-    <div className="timeline-container" style={{ display: 'flex', gap: '2rem', marginBottom: '2rem', position: 'relative' }}>
-        <div className="timeline-year" style={{ fontWeight: '800', color: 'var(--bumn-blue)', fontSize: '1rem', textAlign: 'right', paddingTop: '0.2rem' }}>
-            {year}
-        </div>
-        <div style={{
-            flex: '0 0 2px',
-            backgroundColor: 'var(--bumn-gold)',
-            position: 'relative'
-        }}>
-            <div style={{
-                position: 'absolute',
-                top: '0.5rem',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '12px',
-                height: '12px',
-                borderRadius: '50%',
-                backgroundColor: 'var(--bumn-blue)',
-                border: '3px solid white'
-            }}></div>
-        </div>
-        <div style={{ flex: 1, paddingBottom: '1rem' }}>
-            <h4 style={{ color: 'var(--bumn-dark-blue)', marginBottom: '0.25rem', fontSize: '1.1rem' }}>{title}</h4>
-            <div style={{ color: 'var(--bumn-blue)', fontWeight: '600', fontSize: '0.9rem', marginBottom: '0.75rem' }}>{subtitle}</div>
-            {description && <p style={{ color: '#444', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '0.5rem' }}>{description}</p>}
+const TimelineItem = ({ year, title, subtitle, description, highlights, bgColor }) => (
+    <div className={`timeline-container ${bgColor || ''}`}>
+        <div className="spiral-decor"></div>
+        <div className="timeline-year">{year}</div>
+        <div className="timeline-content" style={{ flex: 1 }}>
+            <h3 style={{ margin: '0 0 0.25rem 0', color: 'var(--bumn-dark-blue)', fontSize: '1.2rem', fontWeight: '800' }}>{title}</h3>
+            <div style={{ color: 'var(--bumn-blue)', fontWeight: '600', marginBottom: '0.75rem', fontSize: '0.95rem' }}>{subtitle}</div>
+            {description && <p style={{ margin: '0 0 1rem 0', color: '#444', fontSize: '0.9rem', lineHeight: '1.5' }}>{description}</p>}
             {highlights && (
-                <ul style={{ paddingLeft: '1.2rem', margin: 0, color: '#666', fontSize: '0.9rem', lineHeight: '1.6' }}>
-                    {highlights.map((h, i) => <li key={i} style={{ marginBottom: '0.25rem' }}>{h}</li>)}
+                <ul style={{ paddingLeft: '1.25rem', margin: 0, color: '#555', fontSize: '0.85rem' }}>
+                    {highlights.map((h, i) => (
+                        <li key={i} style={{ marginBottom: '0.4rem', lineHeight: '1.4' }}>{h}</li>
+                    ))}
                 </ul>
             )}
         </div>
@@ -149,6 +133,49 @@ const About = () => {
                     line-height: 1.4;
                     padding-left: 2rem;
                 }
+                .timeline-container {
+                    display: flex;
+                    gap: 2rem;
+                    margin-bottom: 3rem;
+                    position: relative;
+                    padding: 1.5rem;
+                    border-radius: 12px;
+                    background: rgba(255, 255, 255, 0.5);
+                    backdrop-filter: blur(5px);
+                    border: 1px solid rgba(0,0,0,0.05);
+                    transition: all 0.3s ease;
+                    overflow: hidden;
+                }
+                .timeline-container:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+                }
+                .timeline-container.bg-red { border-left: 5px solid #d63031; animation: pulseRed 4s infinite; }
+                .timeline-container.bg-blue { border-left: 5px solid #00509d; animation: pulseBlue 4s infinite; }
+                .timeline-container.bg-yellow { border-left: 5px solid #fdc500; animation: pulseYellow 4s infinite; }
+                .timeline-container.bg-green { border-left: 5px solid #27ae60; animation: pulseGreen 4s infinite; }
+
+                @keyframes pulseRed { 0% { background: rgba(214, 48, 49, 0.02); } 50% { background: rgba(214, 48, 49, 0.08); } 100% { background: rgba(214, 48, 49, 0.02); } }
+                @keyframes pulseBlue { 0% { background: rgba(0, 80, 157, 0.02); } 50% { background: rgba(0, 80, 157, 0.08); } 100% { background: rgba(0, 80, 157, 0.02); } }
+                @keyframes pulseYellow { 0% { background: rgba(253, 197, 0, 0.02); } 50% { background: rgba(253, 197, 0, 0.08); } 100% { background: rgba(253, 197, 0, 0.02); } }
+                @keyframes pulseGreen { 0% { background: rgba(39, 174, 96, 0.02); } 50% { background: rgba(39, 174, 96, 0.08); } 100% { background: rgba(39, 174, 96, 0.02); } }
+
+                .spiral-decor {
+                    position: absolute;
+                    right: -20px;
+                    top: -20px;
+                    width: 100px;
+                    height: 100px;
+                    border: 2px dashed rgba(0,0,0,0.1);
+                    border-radius: 50%;
+                    animation: rotateSpiral 10s linear infinite;
+                    pointer-events: none;
+                }
+                @keyframes rotateSpiral {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
+
                 @media (max-width: 992px) {
                     .about-grid {
                         grid-template-columns: 1fr;
@@ -160,19 +187,27 @@ const About = () => {
                 }
                 .timeline-year {
                     flex: 0 0 110px;
+                    font-weight: 800;
+                    color: var(--bumn-blue);
+                    font-size: 1rem;
+                    text-align: right;
                 }
                 @media (max-width: 480px) {
-                    .timeline-year {
-                        flex: 0 0 75px !important;
-                        font-size: 0.75rem !important;
-                        text-align: left !important;
-                        margin-bottom: 0.5rem;
-                        padding-left: 20px;
-                    }
                     .timeline-container {
                         gap: 0.5rem !important;
                         flex-direction: column;
-                        margin-bottom: 2.5rem !important;
+                        padding: 1.25rem !important;
+                        margin-bottom: 2rem !important;
+                    }
+                    .timeline-year {
+                        flex: none !important;
+                        font-size: 0.9rem !important;
+                        text-align: left !important;
+                        margin-bottom: 0.5rem;
+                        background: rgba(255,255,255,0.5);
+                        display: inline-block;
+                        padding: 2px 8px;
+                        border-radius: 4px;
                     }
                     .skill-card-premium {
                         padding: 1rem;
@@ -205,18 +240,20 @@ const About = () => {
                                     "Melakukan kontrol kualitas bahan mentah sebelum distribusi.",
                                     "Berkoordinasi dengan tim untuk memastikan proses produksi berjalan tepat waktu."
                                 ]}
+                                bgColor="bg-red"
                             />
                             <TimelineItem
                                 year="Feb – Sep 2024"
                                 title="Admin Marketplace, Kurir, dan Sales (Rangkap)"
                                 subtitle="Herbal Berkah Group | Yogyakarta"
-                                description="UMKM bidang jamu tradisional yang dipasarkan melalui marketplace online dan distribusi offline."
+                                description="UMKM bidang jamu tradisional yang dipasarkan melalui marketplace online and distribusi offline."
                                 highlights={[
                                     "Mengelola penjualan online melalui marketplace (input produk, update stok, dan order).",
                                     "Menangani komunikasi pelanggan, follow-up pesanan, dan pelayanan konsumen.",
                                     "Melakukan pengiriman produk langsung ke pelanggan serta distribusi ke mitra offline.",
                                     "Membantu pemasaran produk secara langsung melalui strategi sales lapangan."
                                 ]}
+                                bgColor="bg-blue"
                             />
                             <TimelineItem
                                 year="Nov '24 – Jul '25"
@@ -229,6 +266,7 @@ const About = () => {
                                     "Memastikan pengiriman tepat waktu serta menjaga kualitas produk selama pengantaran.",
                                     "Membantu peningkatan penjualan melalui pendekatan promosi dan komunikasi langsung."
                                 ]}
+                                bgColor="bg-yellow"
                             />
                             <TimelineItem
                                 year="2023 – 2024"
@@ -241,6 +279,7 @@ const About = () => {
                                     "Berkoordinasi dengan tim produksi untuk memastikan hasil cetak sesuai desain.",
                                     "Mendukung pelayanan pelanggan online maupun offline terkait permintaan desain."
                                 ]}
+                                bgColor="bg-green"
                             />
                         </div>
 
