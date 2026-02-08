@@ -131,9 +131,7 @@ const Hero = () => {
                     </h1>
 
                     <p className="hero-desc-pro">
-                        Ahli dalam penyusunan <strong>Laporan Analisa</strong>,
-                        <strong> Dokumen Perencanaan</strong>, <strong>Analisis Tata Ruang Pemetaan</strong>,
-                        serta <strong>Public Speaking Strategis</strong> untuk pembangunan wilayah yang berkelanjutan.
+                        Urban Planner (S1 PWK) dengan kemampuan dalam penyusunan dokumen perencanaan dan akademik seperti <strong>laporan analisis</strong>, <strong>laporan praktik</strong>, <strong>makalah ilmiah</strong>, serta <strong>naskah akademik</strong>. Berpengalaman dalam <strong>pemetaan dan analisis tata ruang</strong> menggunakan ArcGIS dan QGIS, serta <strong>visualisasi desain</strong> menggunakan SketchUp dan AutoCAD. Terbiasa melakukan <strong>presentasi dan public speaking</strong>, termasuk pengalaman sebagai host live TikTok & Shopee. Menguasai tools desain dan editing seperti Canva dan CorelDRAW untuk mendukung komunikasi data secara profesional.
                     </p>
 
                     <div className="cta-btns">
