@@ -281,47 +281,47 @@ const About = () => {
 
                         <div className="skill-card-premium">
                             <div className="skill-icon-wrap"><span>🌍</span><span className="skill-label-text">GIS & Pemetaan</span></div>
-                            <div className="skill-desc-text">Analisis Spasial & Kartografi Digital (ArcGIS, QGIS, GEE)</div>
+                            <div className="skill-desc-text">Analisis Spasial & Kartografi Digital (ArcGIS, QGIS, Google Earth)</div>
                         </div>
                         <div className="skill-card-premium">
                             <div className="skill-icon-wrap"><span>📐</span><span className="skill-label-text">Perencanaan Wilayah</span></div>
-                            <div className="skill-desc-text">Penyusunan Dokumen Teknis & Strategis Kota</div>
+                            <div className="skill-desc-text">Analisis dan Perencanaan Wilayah (Microsoft Word, Excel, PowerPoint)</div>
                         </div>
                         <div className="skill-card-premium">
                             <div className="skill-icon-wrap"><span>📊</span><span className="skill-label-text">Olah Data & Statistik</span></div>
-                            <div className="skill-desc-text">Manajemen Data Kuantitatif (Advanced Excel, SPSS)</div>
+                            <div className="skill-desc-text">Pengolahan Data Statistik & Penelitian (SPSS, Microsoft Excel)</div>
                         </div>
                         <div className="skill-card-premium">
                             <div className="skill-icon-wrap"><span>📝</span><span className="skill-label-text">Reporting Strategis</span></div>
-                            <div className="skill-desc-text">Penyusunan Administrasi & Laporan Perencanaan</div>
+                            <div className="skill-desc-text">Penyusunan Laporan Analisis & Dokumen Perencanaan (MS Word, Excel, PPT)</div>
                         </div>
                         <div className="skill-card-premium">
                             <div className="skill-icon-wrap"><span>📍</span><span className="skill-label-text">Survey Lapangan</span></div>
-                            <div className="skill-desc-text">Akuisisi Data Terestris & Metodologi Survei (GPS)</div>
+                            <div className="skill-desc-text">Survey Lapangan & Pengumpulan Data (Google Earth, GPS, Dokumentasi)</div>
                         </div>
                         <div className="skill-card-premium">
                             <div className="skill-icon-wrap"><span>🎨</span><span className="skill-label-text">Komunikasi Visual</span></div>
-                            <div className="skill-desc-text">Layout Peta, Presentasi & Infografis (Adobe CC)</div>
+                            <div className="skill-desc-text">Layout Peta, Presentasi & Infografis (Adobe Illustrator, Photoshop, Canva, CorelDRAW)</div>
                         </div>
                         <div className="skill-card-premium">
                             <div className="skill-icon-wrap"><span>🏗️</span><span className="skill-label-text">Visualisasi 3D</span></div>
-                            <div className="skill-desc-text">Pemodelan Tata Ruang & Konstruksi (AutoCAD, SketchUp)</div>
+                            <div className="skill-desc-text">Desain Teknis & Visualisasi Tata Ruang (AutoCAD, SketchUp)</div>
                         </div>
                         <div className="skill-card-premium">
                             <div className="skill-icon-wrap"><span>🎤</span><span className="skill-label-text">Public Speaking</span></div>
-                            <div className="skill-desc-text">Komunikasi Profesional & Teknik Presentasi</div>
+                            <div className="skill-desc-text">Public Speaking & Presentasi Profesional (PowerPoint, Canva)</div>
                         </div>
                         <div className="skill-card-premium">
                             <div className="skill-icon-wrap"><span>🎬</span><span className="skill-label-text">Digital Content</span></div>
-                            <div className="skill-desc-text">Video Editing & Multimedia Storytelling (CapCut)</div>
+                            <div className="skill-desc-text">Editing Video & Konten Digital (CapCut Excellence)</div>
                         </div>
                         <div className="skill-card-premium">
                             <div className="skill-icon-wrap"><span>🏛️</span><span className="skill-label-text">Instansi Teknis</span></div>
-                            <div className="skill-desc-text">Pengalaman DPUPKP Sleman (Nilai Sempurna)</div>
+                            <div className="skill-desc-text">Pengalaman DPUPKP Sleman (Nilai Sempurna - Laporan & Analisis Lapangan)</div>
                         </div>
                         <div className="skill-card-premium">
                             <div className="skill-icon-wrap"><span>🤳</span><span className="skill-label-text">Digital Interaction</span></div>
-                            <div className="skill-desc-text">Sales Skill & Host Live (Shopee/TikTok Live)</div>
+                            <div className="skill-desc-text">Host Shopee & TikTok Live (Communication & Sales Skill)</div>
                         </div>
 
                         <div style={{
