@@ -6,16 +6,19 @@
   padding: 0 2rem;
 }
 
-/* Header - Animated Gradient Style */
+/* Header - Premium Animated Glass Style */
 .header-wrapper {
-  background: linear-gradient(-45deg, #a8e063, #56ab2f, #0052D4, #4364F7, #6FB1FC, #FDC500);
-  background-size: 400% 400%;
-  animation: gradientHeader 15s ease infinite;
-  box-shadow: var(--shadow-nav);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   position: sticky;
-  top: 0;
+  top: 15px;
+  margin: 0 1rem;
+  border-radius: 20px;
   z-index: 1000;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
 }
 
 @keyframes gradientHeader {
