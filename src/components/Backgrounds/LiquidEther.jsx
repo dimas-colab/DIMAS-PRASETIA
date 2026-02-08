@@ -773,8 +773,8 @@ export default function LiquidEther({
                 this.createShaderPass();
             }
             getFloatType() {
-                const isIOS = /(iPad|iPhone|iPod)/i.test(navigator.userAgent);
-                return isIOS ? THREE.HalfFloatType : THREE.FloatType;
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                return isMobile ? THREE.HalfFloatType : THREE.FloatType;
             }
             createAllFBO() {
                 const type = this.getFloatType();

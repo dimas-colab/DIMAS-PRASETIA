@@ -22,7 +22,8 @@ const Layout = ({ children }) => {
           autoIntensity={1.2}
           mouseForce={15}
           cursorSize={80}
-          resolution={window.innerWidth < 768 ? 0.25 : 0.5} // Lower resolution on mobile for performance
+          // Automated resolution: lower on mobile high-DPI screens for performance, higher on desktop
+          resolution={Math.min(0.6, 1.0 / (window.devicePixelRatio || 1) * (window.innerWidth < 768 ? 0.8 : 1.0))}
         />
       </div>
       <header className="header-wrapper">
