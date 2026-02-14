@@ -7,8 +7,8 @@ export default function LiquidEther({
     cursorSize = 100,
     isViscous = false,
     viscous = 30,
-    iterationsViscous = 32,
-    iterationsPoisson = 32,
+    iterationsViscous = window.innerWidth < 768 ? 16 : 32,
+    iterationsPoisson = window.innerWidth < 768 ? 16 : 32,
     dt = 0.014,
     BFECC = true,
     resolution = 0.5,
@@ -773,7 +773,7 @@ export default function LiquidEther({
                 this.createShaderPass();
             }
             getFloatType() {
-                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                const isMobile = window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
                 return isMobile ? THREE.HalfFloatType : THREE.FloatType;
             }
             createAllFBO() {

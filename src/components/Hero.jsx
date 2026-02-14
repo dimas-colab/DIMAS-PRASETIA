@@ -6,77 +6,120 @@ const Hero = () => {
             <style>{`
                 .hero-section {
                     position: relative;
-                    min-height: 85vh;
+                    min-height: 90vh;
                     display: flex;
                     align-items: center;
-                    background: linear-gradient(-45deg, #002b5c, #00509d, #27ae60, #fdc500);
-                    background-size: 400% 400%;
-                    animation: meshGradient 15s ease infinite;
+                    background: linear-gradient(135deg, #001a3d 0%, #00509d 50%, #003d7a 100%);
                     color: white;
-                    padding: 4rem 0 10rem 0;
-                    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-                    margin-bottom: -5rem;
+                    padding: 6rem 0 12rem 0;
+                    clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+                    margin-bottom: -6rem;
                     overflow: hidden;
                     z-index: 10;
                 }
                 
-                @keyframes meshGradient {
-                    0% { background-position: 0% 50%; }
-                    50% { background-position: 100% 50%; }
-                    100% { background-position: 0% 50%; }
+                .hero-section::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: 
+                        radial-gradient(circle at 20% 50%, rgba(253, 197, 0, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(39, 174, 96, 0.1) 0%, transparent 50%);
+                    animation: pulseGlow 8s ease-in-out infinite;
+                    z-index: 1;
+                }
+
+                @keyframes pulseGlow {
+                    0%, 100% { opacity: 0.5; }
+                    50% { opacity: 1; }
                 }
 
                 .hero-content {
                     position: relative;
                     z-index: 2;
-                    max-width: 850px;
+                    max-width: 900px;
                 }
 
                 .hero-glass-badge {
                     display: inline-flex;
                     align-items: center;
                     gap: 0.5rem;
-                    background: rgba(255, 255, 255, 0.1);
+                    background: rgba(253, 197, 0, 0.15);
                     backdrop-filter: blur(10px);
-                    padding: 8px 20px;
+                    padding: 10px 24px;
                     border-radius: 50px;
-                    border: 1px solid rgba(255, 255, 255, 0.2);
-                    font-size: 0.85rem;
-                    font-weight: 700;
-                    color: #fff;
-                    margin-bottom: 2rem;
-                    animation: floatBadge 3s ease-in-out infinite;
+                    border: 2px solid rgba(253, 197, 0, 0.3);
+                    font-size: 0.8rem;
+                    font-weight: 800;
+                    color: #fdc500;
+                    margin-bottom: 2.5rem;
+                    animation: floatBadge 4s ease-in-out infinite;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
                 }
 
                 @keyframes floatBadge {
-                    0%, 100% { transform: translateY(0); }
-                    50% { transform: translateY(-5px); }
+                    0%, 100% { transform: translateY(0) scale(1); }
+                    50% { transform: translateY(-8px) scale(1.02); }
                 }
 
                 .hero-title-main {
-                    font-size: clamp(2.5rem, 6vw, 4.5rem);
+                    font-size: clamp(2.5rem, 6vw, 5rem);
                     font-weight: 900;
-                    line-height: 1.05;
-                    margin-bottom: 1.5rem;
+                    line-height: 1.1;
+                    margin-bottom: 2rem;
                     letter-spacing: -2px;
-                    animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+                    animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+                    color: #ffffff;
+                    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
                 }
 
                 .title-gradient-text {
                     display: block;
-                    background: linear-gradient(to right, #fdc500, #fff);
+                    background: linear-gradient(90deg, 
+                        #fdc500 0%, 
+                        #ffed4e 25%, 
+                        #ffd700 50%, 
+                        #ffed4e 75%, 
+                        #fdc500 100%
+                    );
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
-                    filter: drop-shadow(0 0 15px rgba(253, 197, 0, 0.3));
+                    background-size: 300% 100%;
+                    animation: gradientFlow 4s ease-in-out infinite;
+                    filter: drop-shadow(0 4px 12px rgba(253, 197, 0, 0.6));
+                    font-weight: 900;
+                    margin-top: 0.5rem;
+                }
+
+                @keyframes gradientFlow {
+                    0%, 100% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                }
+
+                @keyframes slideInLeft {
+                    from { opacity: 0; transform: translateX(-50px); }
+                    to { opacity: 1; transform: translateX(0); }
                 }
 
                 .hero-desc-pro {
-                    font-size: clamp(1rem, 2vw, 1.25rem);
-                    line-height: 1.6;
-                    color: rgba(255, 255, 255, 0.85);
-                    max-width: 650px;
-                    margin-bottom: 3rem;
-                    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+                    font-size: clamp(1rem, 2vw, 1.2rem);
+                    line-height: 1.8;
+                    color: rgba(255, 255, 255, 0.92);
+                    max-width: 750px;
+                    margin-bottom: 3.5rem;
+                    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
+                    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+                    font-weight: 400;
+                }
+
+                .hero-desc-pro strong {
+                    color: #fdc500;
+                    font-weight: 700;
+                    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
                 }
 
                 @keyframes fadeInUp {
@@ -87,31 +130,76 @@ const Hero = () => {
                 .cta-btns {
                     display: flex;
                     gap: 1.5rem;
-                    animation: fadeInUp 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+                    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards;
+                    flex-wrap: wrap;
                 }
 
                 .floating-shape {
                     position: absolute;
-                    background: rgba(255, 255, 255, 0.03);
+                    background: rgba(253, 197, 0, 0.08);
                     border-radius: 50%;
-                    filter: blur(40px);
+                    filter: blur(60px);
                     z-index: 1;
                     pointer-events: none;
+                    animation: floatShape 20s ease-in-out infinite;
+                }
+
+                @keyframes floatShape {
+                    0%, 100% { transform: translate(0, 0) scale(1); }
+                    33% { transform: translate(30px, -30px) scale(1.1); }
+                    66% { transform: translate(-30px, 30px) scale(0.9); }
                 }
 
                 @media (max-width: 768px) {
                     .hero-section {
-                        padding: 6rem 0 8rem 0;
+                        padding: 5rem 0 7rem 0;
                         text-align: center;
                         clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
                     }
+                    
+                    .hero-title-main {
+                        font-size: clamp(1.4rem, 7vw, 2.2rem);
+                        letter-spacing: -0.5px;
+                        line-height: 1.2;
+                    }
+                    
+                    .hero-desc-pro {
+                        font-size: clamp(0.85rem, 3.2vw, 1rem);
+                        margin-left: auto;
+                        margin-right: auto;
+                        max-width: 90%;
+                    }
+                    
                     .cta-btns {
                         flex-direction: column;
                         align-items: center;
+                        gap: 1rem;
                     }
+                    
+                    .hero-glass-badge {
+                        font-size: 0.75rem;
+                        padding: 6px 16px;
+                    }
+                }
+
+                @media (min-width: 769px) and (max-width: 1024px) {
+                    .hero-title-main {
+                        font-size: clamp(2.25rem, 4.5vw, 3rem);
+                    }
+                    
                     .hero-desc-pro {
-                        margin-left: auto;
-                        margin-right: auto;
+                        font-size: clamp(1rem, 2vw, 1.1rem);
+                        max-width: 600px;
+                    }
+                }
+
+                @media (min-width: 1025px) {
+                    .hero-title-main {
+                        font-size: 3.5rem;
+                    }
+                    
+                    .hero-desc-pro {
+                        font-size: 1.15rem;
                     }
                 }
             `}</style>
