@@ -51,6 +51,18 @@ const TimelineItem = ({ year, title, subtitle, description, highlights, bgColor 
 
 const About = () => {
     const [isUnlocked, setIsUnlocked] = useState(false);
+    const [accessCode, setAccessCode] = useState('');
+    const [isError, setIsError] = useState(false);
+
+    const handleUnlock = () => {
+        if (accessCode.toUpperCase() === 'BAIK SILAHKAN') {
+            setIsUnlocked(true);
+            setIsError(false);
+        } else {
+            setIsError(true);
+            setTimeout(() => setIsError(false), 500);
+        }
+    };
     return (
         <section id="about" className="section" style={{
             position: 'relative',
@@ -400,6 +412,56 @@ const About = () => {
                     margin-bottom: 1.5rem;
                     animation: pulseLock 2s infinite;
                 }
+                .access-input-group {
+                    margin-bottom: 2rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 1rem;
+                }
+                .access-input {
+                    padding: 1rem 1.5rem;
+                    font-size: 1.2rem;
+                    border-radius: 12px;
+                    border: 2px solid #ddd;
+                    width: 100%;
+                    max-width: 350px;
+                    text-align: center;
+                    text-transform: uppercase;
+                    font-weight: 800;
+                    letter-spacing: 2px;
+                    transition: all 0.3s ease;
+                    outline: none;
+                }
+                .access-input:focus {
+                    border-color: var(--bumn-blue);
+                    box-shadow: 0 0 15px rgba(0, 80, 157, 0.2);
+                }
+                .access-input.error {
+                    border-color: #d63031;
+                    animation: shakeError 0.4s ease;
+                }
+                @keyframes shakeError {
+                    0%, 100% { transform: translateX(0); }
+                    25% { transform: translateX(-8px); }
+                    50% { transform: translateX(8px); }
+                    75% { transform: translateX(-8px); }
+                }
+                .wa-request-link {
+                    color: #25D366;
+                    text-decoration: none;
+                    font-weight: 800;
+                    font-size: 0.95rem;
+                    margin-top: 1.5rem;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    transition: opacity 0.3s ease;
+                }
+                .wa-request-link:hover {
+                    opacity: 0.8;
+                    text-decoration: underline;
+                }
                 @keyframes pulseLock {
                     0%, 100% { transform: scale(1); opacity: 0.8; }
                     50% { transform: scale(1.1); opacity: 1; }
@@ -435,11 +497,34 @@ const About = () => {
                             <span className="unlock-icon">🔒</span>
                             <h3 style={{ color: 'var(--bumn-dark-blue)', marginBottom: '1rem', fontWeight: '900', fontSize: '1.5rem' }}>INFORMASI TERBATAS</h3>
                             <p style={{ color: '#444', marginBottom: '2.5rem', maxWidth: '500px', margin: '0 auto 2.5rem auto', lineHeight: '1.6', fontSize: '1rem' }}>
-                                Keamanan data dan privasi adalah prioritas. Untuk melihat detail profil, pengalaman kerja, dan kompetensi saya, silakan klik tombol di bawah ini.
+                                Keamanan data dan privasi adalah prioritas. Untuk melihat detail profil, pengalaman kerja, dan kompetensi saya, silakan masukkan <b>Kode Akses</b> di bawah ini.
                             </p>
-                            <button className="unlock-btn" onClick={() => setIsUnlocked(true)}>
-                                Buka Detail Profil
-                            </button>
+
+                            <div className="access-input-group">
+                                <input
+                                    type="text"
+                                    className={`access-input ${isError ? 'error' : ''}`}
+                                    placeholder="Masukkan Kode"
+                                    value={accessCode}
+                                    onChange={(e) => setAccessCode(e.target.value)}
+                                    onKeyPress={(e) => e.key === 'Enter' && handleUnlock()}
+                                />
+                                <button className="unlock-btn" onClick={handleUnlock}>
+                                    Buka Detail Profil
+                                </button>
+                            </div>
+
+                            <div style={{ borderTop: '1px solid #eee', paddingTop: '1.5rem' }}>
+                                <p style={{ color: '#888', fontSize: '0.85rem', marginBottom: '0.5rem' }}>Belum punya kode?</p>
+                                <a
+                                    href={`https://wa.me/6289525959477?text=${encodeURIComponent('Halo Mas Dimas, saya dari website portfolio. Boleh minta "Kode Akses" buat liat detail Profil & Rekam Jejak Anda?')}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="wa-request-link"
+                                >
+                                    💬 Minta Akses via WhatsApp
+                                </a>
+                            </div>
                         </div>
                     ) : (
                         <div className="about-grid">
