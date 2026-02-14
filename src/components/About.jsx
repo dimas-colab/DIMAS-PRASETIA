@@ -490,7 +490,22 @@ const About = () => {
 
             <div className="about-content-wrapper">
                 <div className="container">
-                    <h2 className="section-title">Profil & Rekam Jejak</h2>
+                    <div style={{
+                        display: 'inline-block',
+                        backgroundColor: 'var(--bumn-gold)',
+                        color: 'var(--bumn-dark-blue)',
+                        padding: '4px 12px',
+                        borderRadius: '4px',
+                        fontSize: '0.8rem',
+                        fontWeight: '800',
+                        marginBottom: '1rem',
+                        boxShadow: '0 2px 8px rgba(234, 160, 45, 0.3)'
+                    }}>📌 IDENTITAS & RIWAYAT</div>
+                    <h2 className="section-title" style={{
+                        marginTop: '0.5rem',
+                        color: 'var(--bumn-dark-blue)',
+                        textShadow: '0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.5)'
+                    }}>Profil & Rekam Jejak</h2>
 
                     {!isUnlocked ? (
                         <div className="unlock-overlay">
